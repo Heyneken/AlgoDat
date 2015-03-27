@@ -29,6 +29,8 @@ public class AlignmentController {
             System.out.println("Gelesen: " + token);
             token = lexer.getNextToken();
         }
+
         /* später: hier Lexer an zweiten Input binden; Leseschleife */
+        //TODO: Lexer für zweiten Input anbinden
     }
 }
