@@ -21,7 +21,7 @@ public class AlignmentController {
         BufferedReader inputOriginal = new BufferedReader(readerOriginal);
 
         /* später: hier zweites File */
-        //TODO: Code für supect file
+        //TODO: Code für suspect file
 
         ILexer lexer = new SimpleLexer(inputOriginal);
         IToken token = lexer.getNextToken();
