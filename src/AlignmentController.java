@@ -16,8 +16,9 @@ public class AlignmentController {
     public void run() throws FileNotFoundException, IOException {
 
         /* erstes File lesen */
-        InputStream istreamOriginal = new FileInputStream(original);
-        Reader readerOriginal = new InputStreamReader(istreamOriginal);
+        InputStream inputStreamOriginal = new FileInputStream(original);
+        Reader readerOriginal = new InputStreamReader(inputStreamOriginal);
+        // Ein BufferedReader liest den Input in den Zwischenspeicher
         BufferedReader inputOriginal = new BufferedReader(readerOriginal);
 
         /* später: hier zweites File */

@@ -1,3 +1,5 @@
+import AlgoDat.IMapFactory;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -14,6 +16,7 @@ public class SimpleLexer implements ILexer {
     final private IActionAtInsert actionAtInsert = new StringCoding(4711); // DIC
     final private ITrie trie; // DIC
     private String line;
+    // Teilt den eigelesenen String in einzelne Tokens (eg. Wörter)
     private StringTokenizer tk = null;
 
     public SimpleLexer(BufferedReader reader) throws IOException {
@@ -25,9 +28,9 @@ public class SimpleLexer implements ILexer {
 
     public IToken getNextToken() throws IOException {
         Logger.getLogger(SimpleLexer.class.getName()).log(Level.INFO, "--> next token");
-        IToken result = null;
+        IToken result;
         boolean foundToken = false;
-        boolean noMoreTaken = false;
+        boolean noMoreToken = false;
         do // Invariante: Es gibt einen Tokenizer; tk != null;
         {
             result = null;
@@ -44,20 +47,19 @@ public class SimpleLexer implements ILexer {
                 else {
                     // neue Zeile einlesen
                     tk = null;
-                    line.reader.readLine();
+                    line = reader.readLine();
                     if (line != null) {
                         tk = new StringTokenizer(line);
                     }
                 }
             }
             else {
-                noMoreTaken = true;
+                noMoreToken = true;
             }
         }
-        while (!foundToken && !noMoreTaken) {
-            Logger.getLogger(SimpleLexer.class.getName()).log(Level.INFO, "<-- result Token: " + result);
-            return result;
-        }
+        while (!foundToken && !noMoreToken);
+        Logger.getLogger(SimpleLexer.class.getName()).log(Level.INFO, "<-- result Token: " + result);
+        return result;
     }
 
     public String decode(IToken tk) throws UnsupportedOperationException {
