@@ -1,5 +1,3 @@
-import AlgoDat.IMapFactory;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -17,12 +15,12 @@ public class SimpleLexer implements ILexer {
     final private ITrie trie; // DIC
     private String line;
     // Teilt den eigelesenen String in einzelne Tokens (eg. Wörter)
-    private StringTokenizer tk = null;
+    private StringTokenizer stringTokenizer = null;
 
     public SimpleLexer(BufferedReader reader) throws IOException {
         this.reader = reader;
         line = reader.readLine();
-        if (line != null) tk = new StringTokenizer(line);
+        if (line != null) stringTokenizer = new StringTokenizer(line);
         this.trie = new Trie(mapFactory); // DIC
     }
 
@@ -31,12 +29,12 @@ public class SimpleLexer implements ILexer {
         IToken result;
         boolean foundToken = false;
         boolean noMoreToken = false;
-        do // Invariante: Es gibt einen Tokenizer; tk != null;
+        do // Invariante: Es gibt einen Tokenizer; stringTokenizer != null;
         {
             result = null;
-            if (tk != null) {
-                if (tk.hasMoreElements()) {
-                    String intermediate = tk.nextToken();
+            if (stringTokenizer != null) {
+                if (stringTokenizer.hasMoreElements()) {
+                    String intermediate = stringTokenizer.nextToken();
                     Logger.getLogger(SimpleLexer.class.getName()).log(Level.INFO, "--- next token:" + intermediate);
                     // später: result =
                     // trie.insert(intermediate, action);
@@ -46,10 +44,10 @@ public class SimpleLexer implements ILexer {
                 }
                 else {
                     // neue Zeile einlesen
-                    tk = null;
+                    stringTokenizer = null;
                     line = reader.readLine();
                     if (line != null) {
-                        tk = new StringTokenizer(line);
+                        stringTokenizer = new StringTokenizer(line);
                     }
                 }
             }
@@ -62,7 +60,7 @@ public class SimpleLexer implements ILexer {
         return result;
     }
 
-    public String decode(IToken tk) throws UnsupportedOperationException {
+    public String decode(IToken token) throws UnsupportedOperationException {
         throw new UnsupportedOperationException("nochNichtImplementiert");
     }
 

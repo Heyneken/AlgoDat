@@ -5,6 +5,6 @@ import java.util.Map;
  */
 public interface IMapFactory {
 
-    Map create();
+    public Map create();
 
 }
