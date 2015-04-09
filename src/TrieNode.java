@@ -11,6 +11,8 @@ public class TrieNode implements ITrieNode {
     private ITrieNode parent;
     private Comparable ingoingPartialKey;
 
+
+
     public TrieNode(IMapFactory mapFactory, ITrieNode parent, Comparable ingoingPartialKey) {
         this.mapFactory = mapFactory;
         this.outgoingEdgeMap = this.mapFactory.create();
