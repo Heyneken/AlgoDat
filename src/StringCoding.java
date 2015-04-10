@@ -3,7 +3,8 @@
  */
 public class StringCoding implements IActionAtInsert {
 
-    private int counter = 0;
+    /* Value of one entry in the dictionary */
+    private int counter;
 
     public StringCoding(int start) {
         this.counter = start;
@@ -21,7 +22,7 @@ public class StringCoding implements IActionAtInsert {
 
     @Override
     public Object getValue() {
-        return null;
+        return counter;
     }
 
     @Override
@@ -31,7 +32,7 @@ public class StringCoding implements IActionAtInsert {
 
     @Override
     public String toString() {
-        return "StringCoding{" + "counter=" + counter + '}';
+        return "StringCoding{" + "counter = " + counter + '}';
     }
 
 }
