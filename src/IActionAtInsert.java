@@ -3,9 +3,12 @@
  */
 public interface IActionAtInsert {
 
-    public Object actionAtKeyNotFound();
-    public Object actionAtKeyFound(Object previous);
-    public Object getValue();
-    public void setValue(Object value);
+    Object trieNodeNotFound();
+
+    Object trieNodeFound(Object previous);
+
+    Object getValue();
+
+    void setValue(Object value);
 
 }

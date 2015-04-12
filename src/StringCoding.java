@@ -3,7 +3,7 @@
  */
 public class StringCoding implements IActionAtInsert {
 
-    /* Value of one entry in the dictionary */
+    /* Code (Wert) eines Schlüsselendknotens */
     private int counter;
 
     public StringCoding(int start) {
@@ -11,13 +11,13 @@ public class StringCoding implements IActionAtInsert {
     }
 
     @Override
-    public Object actionAtKeyNotFound() {
+    public Object trieNodeNotFound() {
         return counter++;
     }
 
     @Override
-    public Object actionAtKeyFound(Object previous) {
-        return previous;
+    public Object trieNodeFound(Object parentNode) {
+        return parentNode;
     }
 
     @Override

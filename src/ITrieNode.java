@@ -5,6 +5,7 @@ import java.util.Iterator;
  */
 public interface ITrieNode {
 
-    public ITrieReference recursiveInsert(Iterator allCharacters, IActionAtInsert actionAtInsert);
+    ITrieReference recursiveInsert(Iterator<Comparable<Character>> allCharacters, IActionAtInsert actionAtInsert);
 
+    ITrieReference recursiveInsert(String string, IActionAtInsert actionAtInsert);
 }

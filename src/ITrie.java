@@ -5,8 +5,8 @@ import java.util.Iterator;
  */
 public interface ITrie {
 
-    public ITrieReference insert(Iterator<Character> allCharacters, IActionAtInsert actionAtInsert);
+    ITrieReference insert(Iterator<Comparable<Character>> allCharacters, IActionAtInsert actionAtInsert);
 
-    public ITrieReference insert(String string, IActionAtInsert actionAtInsert);
+    ITrieReference insert(String string, IActionAtInsert actionAtInsert);
 
 }

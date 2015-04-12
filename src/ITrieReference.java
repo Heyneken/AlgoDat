@@ -3,10 +3,10 @@
  */
 public interface ITrieReference {
 
-    public boolean gotFound();
+    boolean gotFound();
 
-    public Object getValue();
+    Object getValue();
 
-    public ITrieNode getNode();
+    ITrieNode getNode();
 
 }

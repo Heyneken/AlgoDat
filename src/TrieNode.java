@@ -31,8 +31,14 @@ public class TrieNode implements ITrieNode {
 
     }
 
+    /**
+     *
+     * @param allCharacters
+     * @param actionAtInsert
+     * @return
+     */
     @Override
-    public ITrieReference recursiveInsert(Iterator allCharacters, IActionAtInsert actionAtInsert) {
+    public ITrieReference recursiveInsert(Iterator<Comparable<Character>> allCharacters, IActionAtInsert actionAtInsert) {
         /*
         Es wird nur dann ein einzelner Character des Iterators abgefragt, sofern noch nicht alle Characters des
         Iterators überprüft wurden.
@@ -63,9 +69,8 @@ public class TrieNode implements ITrieNode {
             (Ende eines Wortes im Aplphabet)
              */
             if (edgeMap.isEmpty()) {
-                /*
-                return gotFound(this);
-                 */
+                actionAtInsert.trieNodeFound(this);
+                return new TrieReference(true, actionAtInsert.getValue());
             }
             /*
             Hat ein Knoten nach komplettem Durchlauf des Iterators noch weitere Kanten, handelt es sich um einen
@@ -73,11 +78,21 @@ public class TrieNode implements ITrieNode {
             (Wort in einem bekanntem Wort im Alphabet)
              */
             else {
-                /*
-                this.toString();
-                return this;
-                 */
+                actionAtInsert.trieNodeNotFound();
+                actionAtInsert.setValue(this);
+                return new TrieReference(false, actionAtInsert.getValue());
             }
         }
+    }
+
+    /**
+     *
+     * @param string
+     * @param actionAtInsert
+     * @return
+     */
+    @Override
+    public ITrieReference recursiveInsert(String string, IActionAtInsert actionAtInsert) {
+        return recursiveInsert(Helper.createIterator(string), actionAtInsert);
     }
 }

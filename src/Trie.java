@@ -3,22 +3,21 @@ import java.util.Iterator;
 /**
  * Created by Heyneken on 09.04.15.
  */
-public class Trie implements ITrie{
+public class Trie implements ITrie {
 
-    private IMapFactory mapFactory;
     final private ITrieNode root;
 
     public Trie(IMapFactory mapFactory) {
-        root = new TrieNode(mapFactory);
+        this.root = new TrieNode(mapFactory);
     }
 
     @Override
-    public ITrieReference insert(Iterator<Character> allCharacters, IActionAtInsert actionAtInsert) {
-        return null;
+    public ITrieReference insert(Iterator<Comparable<Character>> allCharacters, IActionAtInsert actionAtInsert) {
+        return root.recursiveInsert(allCharacters, actionAtInsert);
     }
 
     @Override
     public ITrieReference insert(String string, IActionAtInsert actionAtInsert) {
-        return null;
+        return insert(Helper.createIterator(string), actionAtInsert);
     }
 }
