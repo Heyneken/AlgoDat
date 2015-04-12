@@ -12,7 +12,7 @@ public class TrieReference implements ITrieReference {
     }
 
     @Override
-    public boolean getFound() {
+    public boolean gotFound() {
         return false;
     }
 

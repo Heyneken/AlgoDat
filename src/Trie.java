@@ -13,7 +13,7 @@ public class Trie implements ITrie{
     }
 
     @Override
-    public ITrieReference insert(Iterator<Character> iterator, IActionAtInsert actionAtInsert) {
+    public ITrieReference insert(Iterator<Character> allCharacters, IActionAtInsert actionAtInsert) {
         return null;
     }
 

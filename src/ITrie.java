@@ -5,7 +5,7 @@ import java.util.Iterator;
  */
 public interface ITrie {
 
-    public ITrieReference insert(Iterator<Character> iterator, IActionAtInsert actionAtInsert);
+    public ITrieReference insert(Iterator<Character> allCharacters, IActionAtInsert actionAtInsert);
 
     public ITrieReference insert(String string, IActionAtInsert actionAtInsert);
 

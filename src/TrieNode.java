@@ -13,7 +13,9 @@ public class TrieNode implements ITrieNode {
     private Comparable ingoingPartialKey;
 
 
-
+    /*
+    Konstruiert einen Zwischenknoten
+     */
     public TrieNode(IMapFactory mapFactory, ITrieNode parent, Comparable ingoingPartialKey) {
         this.mapFactory = mapFactory;
         this.edgeMap = this.mapFactory.create();
@@ -21,6 +23,9 @@ public class TrieNode implements ITrieNode {
         this.ingoingPartialKey = ingoingPartialKey;
     }
 
+    /*
+    Konstruiert einen Wurzelknoten
+     */
     public TrieNode(IMapFactory mapFactory) {
         this.mapFactory = mapFactory;
 
@@ -28,23 +33,50 @@ public class TrieNode implements ITrieNode {
 
     @Override
     public ITrieReference recursiveInsert(Iterator allCharacters, IActionAtInsert actionAtInsert) {
+        /*
+        Es wird nur dann ein einzelner Character des Iterators abgefragt, sofern noch nicht alle Characters des
+        Iterators überprüft wurden.
+         */
         if (allCharacters.hasNext()) {
             Comparable nextCharacter = (Comparable) allCharacters.next();
             Set set = this.edgeMap.keySet();
+            /*
+            Ist die Abfolge der Knoten bereits vorhanden, geht der Iterator einen Schritt weiter, ohne einen
+            neuen "Abzweigung" anzulegen.
+            */
             if (set.contains(nextCharacter)) {
                 return recursiveInsert(allCharacters, actionAtInsert);
-            } else {
-                ITrieNode temporaryTrieNode = new TrieNode(mapFactory, this, nextCharacter);
-                this.edgeMap.put(nextCharacter, temporaryTrieNode);
+            }
+            /*
+            Ist die Abfolge der Knoten noch nicht vorhanden, wird ein neuer TrieNode mit, welcher eine neue "Abzweigung"
+            darstellt, instanziert. Auch hier geht der Iterator einen Schritt vorwärts.
+             */
+            else {
+                ITrieNode newTrieNode = new TrieNode(mapFactory, this, nextCharacter);
+                this.edgeMap.put(nextCharacter, newTrieNode);
                 return recursiveInsert(allCharacters, actionAtInsert);
             }
-        } else {
-            // Aktueller Konten ist Endknoten
+        }
+        else {
+            /*
+            Hat ein Knoten keine ausgehenden Kanten mehr, handelt es sich um einen bekannten Schlüsselendknoten
+            (Ende eines Wortes im Aplphabet)
+             */
             if (edgeMap.isEmpty()) {
-                return new TrieReference(false, 3); {
-                }
-            } else {
-
+                /*
+                return gotFound(this);
+                 */
+            }
+            /*
+            Hat ein Knoten nach komplettem Durchlauf des Iterators noch weitere Kanten, handelt es sich um einen
+            Teilschlüsselknoten, der nun zum gemacht wird.
+            (Wort in einem bekanntem Wort im Alphabet)
+             */
+            else {
+                /*
+                this.toString();
+                return this;
+                 */
             }
         }
     }

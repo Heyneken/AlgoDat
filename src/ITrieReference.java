@@ -3,7 +3,7 @@
  */
 public interface ITrieReference {
 
-    public boolean getFound();
+    public boolean gotFound();
 
     public Object getValue();
 
