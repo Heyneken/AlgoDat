@@ -20,4 +20,5 @@ public class Trie implements ITrie {
     public ITrieReference insert(String string, IActionAtInsert actionAtInsert) {
         return insert(Helper.createIterator(string), actionAtInsert);
     }
+
 }

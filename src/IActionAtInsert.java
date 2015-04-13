@@ -7,8 +7,8 @@ public interface IActionAtInsert {
 
     Object trieNodeFound(Object previous);
 
-    Object getValue();
+    int getValue();
 
-    void setValue(Object value);
+    void setValue(int value);
 
 }

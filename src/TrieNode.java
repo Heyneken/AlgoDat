@@ -1,6 +1,7 @@
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Created by Heyneken on 09.04.15.
@@ -28,6 +29,7 @@ public class TrieNode implements ITrieNode {
      */
     public TrieNode(IMapFactory mapFactory) {
         this.mapFactory = mapFactory;
+        this.edgeMap = this.mapFactory.create();
 
     }
 
@@ -46,6 +48,7 @@ public class TrieNode implements ITrieNode {
         if (allCharacters.hasNext()) {
             Comparable nextCharacter = (Comparable) allCharacters.next();
             Set set = this.edgeMap.keySet();
+
             /*
             Ist die Abfolge der Knoten bereits vorhanden, geht der Iterator einen Schritt weiter, ohne einen
             neuen "Abzweigung" anzulegen.
@@ -64,6 +67,7 @@ public class TrieNode implements ITrieNode {
             }
         }
         else {
+
             /*
             Hat ein Knoten keine ausgehenden Kanten mehr, handelt es sich um einen bekannten Schlüsselendknoten
             (Ende eines Wortes im Aplphabet)
@@ -79,7 +83,7 @@ public class TrieNode implements ITrieNode {
              */
             else {
                 actionAtInsert.trieNodeNotFound();
-                actionAtInsert.setValue(this);
+                actionAtInsert.setValue(actionAtInsert.getValue());
                 return new TrieReference(false, actionAtInsert.getValue());
             }
         }

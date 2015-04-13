@@ -21,13 +21,13 @@ public class StringCoding implements IActionAtInsert {
     }
 
     @Override
-    public Object getValue() {
+    public int getValue() {
         return counter;
     }
 
     @Override
-    public void setValue(Object newValue) {
-        this.counter = (int) newValue;
+    public void setValue(int newValue) {
+        this.counter = newValue;
     }
 
     @Override
