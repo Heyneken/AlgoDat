@@ -53,17 +53,17 @@ public class TrieNode implements ITrieNode {
             neuen "Abzweigung" anzulegen.
             */
             if (set.contains(nextCharacter)) {
-                return parent.recursiveInsert(allCharacters, actionAtInsert);
+                return edgeMap.get(nextCharacter).recursiveInsert(allCharacters, actionAtInsert);
             }
             /*
             Ist die Abfolge der Knoten noch nicht vorhanden, wird ein neuer TrieNode mit, welcher eine neue "Abzweigung"
             darstellt, instanziert. Auch hier geht der Iterator einen Schritt vorwärts.
              */
             else {
-                TrieNode newTrieNode = new TrieNode(mapFactory, this, nextCharacter);
-                this.edgeMap.put(nextCharacter, parent);
-                System.out.println(edgeMap.toString());
-                return newTrieNode.recursiveInsert(allCharacters, actionAtInsert);
+                TrieNode childTrieNode = new TrieNode(mapFactory, this, nextCharacter);
+                System.out.println(childTrieNode.edgeName.toString());
+                edgeMap.put(nextCharacter, childTrieNode);
+                return childTrieNode.recursiveInsert(allCharacters, actionAtInsert);
             }
         }
         else {
@@ -85,23 +85,6 @@ public class TrieNode implements ITrieNode {
             }
         }
 
-    }
-
-    public String toString() {
-        String temp = "";
-        Iterator iterator = edgeMap.keySet().iterator();
-        System.out.println(edgeMap.keySet().toString());
-        while(iterator.hasNext()){
-            Object ascii = iterator.next();
-            temp += ascii;
-            if(this.value != null){
-                temp += " --> " + value;
-            }
-            temp += "\n";
-
-        }
-
-        return temp;
     }
 
     public void setValue(Integer value) {
