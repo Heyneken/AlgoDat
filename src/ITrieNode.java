@@ -8,4 +8,5 @@ public interface ITrieNode {
     ITrieReference recursiveInsert(Iterator<Comparable<Character>> allCharacters, IActionAtInsert actionAtInsert);
 
     ITrieReference recursiveInsert(String string, IActionAtInsert actionAtInsert);
+
 }

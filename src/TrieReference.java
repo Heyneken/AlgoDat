@@ -5,10 +5,12 @@ public class TrieReference implements ITrieReference {
 
     final private boolean found;
     final private Object value;
+    final private ITrieNode trieNode;
 
-    public TrieReference(boolean found, Object value) {
+    public TrieReference(boolean found, Object value, TrieNode trieNode) {
         this.found = found;
         this.value = value;
+        this.trieNode = trieNode;
     }
 
     @Override
@@ -18,11 +20,11 @@ public class TrieReference implements ITrieReference {
 
     @Override
     public Object getValue() {
-        return null;
+        return value;
     }
 
     @Override
-    public ITrieNode getNode() {
-        return null;
+    public ITrieNode getTrieNode() {
+        return trieNode;
     }
 }

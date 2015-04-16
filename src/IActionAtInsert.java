@@ -9,6 +9,6 @@ public interface IActionAtInsert {
 
     int getValue();
 
-    void setValue(int value);
+    void setValue(Integer value);
 
 }

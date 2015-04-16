@@ -12,13 +12,14 @@ public class Helper {
      * @param string Wort, welches ins Alphabet mit aufgenommen werden soll.
      * @return iterator
      */
-    public static Iterator<Comparable<Character>> createIterator (String string) {
+    public static Iterator createIterator (String string) {
 
-        ArrayList<Comparable<Character>> arrayList = new ArrayList<>();
+        ArrayList<Character> arrayList = new ArrayList<>();
 
         for (char character : string.toCharArray()) {
             arrayList.add(character);
         }
+
 
         return arrayList.iterator();
     }

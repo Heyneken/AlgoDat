@@ -26,13 +26,8 @@ public class StringCoding implements IActionAtInsert {
     }
 
     @Override
-    public void setValue(int newValue) {
+    public void setValue(Integer newValue) {
         this.counter = newValue;
-    }
-
-    @Override
-    public String toString() {
-        return "StringCoding{" + "counter = " + counter + '}';
     }
 
 }

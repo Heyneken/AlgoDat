@@ -5,20 +5,25 @@ import java.util.Iterator;
  */
 public class Trie implements ITrie {
 
-    final private ITrieNode root;
+    final private TrieNode root;
 
     public Trie(IMapFactory mapFactory) {
         this.root = new TrieNode(mapFactory);
     }
 
     @Override
-    public ITrieReference insert(Iterator<Comparable<Character>> allCharacters, IActionAtInsert actionAtInsert) {
-        return root.recursiveInsert(allCharacters, actionAtInsert);
+    public ITrieReference insert(Iterator allCharacters, IActionAtInsert actionAtInsert) {
+                return root.recursiveInsert(allCharacters, actionAtInsert);
     }
 
     @Override
     public ITrieReference insert(String string, IActionAtInsert actionAtInsert) {
         return insert(Helper.createIterator(string), actionAtInsert);
+    }
+
+    @Override
+    public String toString() {
+        return "trie" + root.toString();
     }
 
 }

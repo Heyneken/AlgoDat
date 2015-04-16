@@ -7,6 +7,6 @@ public interface ITrieReference {
 
     Object getValue();
 
-    ITrieNode getNode();
+    ITrieNode getTrieNode();
 
 }
