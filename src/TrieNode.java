@@ -9,10 +9,10 @@ public class TrieNode implements ITrieNode {
 
     final private IMapFactory mapFactory;
     private Map<Comparable<Character>, ITrieNode> edgeMap;
-    private TrieNode parent;
+    private ITrieNode parent;
     private Comparable edgeName;
     private Integer value;
-
+    private String string;
     /*
     Konstruiert einen Zwischenknoten
      */
@@ -22,6 +22,7 @@ public class TrieNode implements ITrieNode {
         this.parent = parent;
         this.edgeName = edgeName;
         this.value = null;
+        this.string = "";
     }
 
     /*
@@ -61,7 +62,6 @@ public class TrieNode implements ITrieNode {
              */
             else {
                 TrieNode childTrieNode = new TrieNode(mapFactory, this, nextCharacter);
-                System.out.println(childTrieNode.edgeName.toString());
                 edgeMap.put(nextCharacter, childTrieNode);
                 return childTrieNode.recursiveInsert(allCharacters, actionAtInsert);
             }
@@ -73,7 +73,6 @@ public class TrieNode implements ITrieNode {
             if (value == null) {
                 actionAtInsert.trieNodeNotFound();
                 this.setValue(actionAtInsert.getValue());
-                System.out.println(value);
                 return new TrieReference(false, actionAtInsert.getValue(), this);
             }
             /*
@@ -85,6 +84,62 @@ public class TrieNode implements ITrieNode {
             }
         }
 
+    }
+
+    public String toString(TrieNode trieNode) {
+        Iterator iterator = trieNode.edgeMap.keySet().iterator();
+
+        TrieNode childTrieNode = trieNode;
+
+
+        while (iterator.hasNext()) {
+            Character egdeName = (Character) iterator.next();
+            childTrieNode = (TrieNode) trieNode.edgeMap.get(egdeName);
+            System.out.println(egdeName);
+            if (childTrieNode.value != null) {
+                System.out.println(childTrieNode.value);
+            }
+        }
+        return this.toString(childTrieNode);
+    }
+
+
+    public void showValues (int level) {
+        Iterator<Comparable<Character>> knoten = edgeMap.keySet().iterator();
+
+        while (knoten.hasNext()) {
+            // den nächsten knoten aufrufen
+            Character charElement = (Character) knoten.next();
+            // Ausgabe des chars mit den vorgestellten leerzeichen
+            System.out.print(whiteSpaceGenerator(level) + charElement);
+
+            // Knoten der nächst tieferen Ebene auf dem es recursiv weiter geht
+            TrieNode target =  (TrieNode) edgeMap.get(charElement);
+
+            if (target.getValue() != null)
+                // Wenn es das Element gibt Ausgabe des Keys
+                System.out.println("\t| -> " + (Integer) target.getValue());
+            else
+                System.out.println("");
+            // in nächster Ebene rekursiv weiter machen
+            target.showValues(++level);
+            // level wieder zurück, wenn man durch die rekursion wieder hier ist
+            level--;
+        }
+    }
+
+    /**
+     * Generieren der WhiteSpaces für die Anzeige des Baums
+     *
+     * @param level
+     * @return String
+     */
+    private String whiteSpaceGenerator (int level) {
+        String space = "";
+        // für jede ebene einen Whitespace einbauen
+        for (int i = 0; i < level; i++)
+            space += ".";
+        return space;
     }
 
     public void setValue(Integer value) {

@@ -7,7 +7,7 @@ public class StringCoding implements IActionAtInsert {
     private int counter;
 
     public StringCoding(int start) {
-        this.counter = start;
+        this.counter = start - 1;
     }
 
     @Override

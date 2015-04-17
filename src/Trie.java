@@ -23,7 +23,8 @@ public class Trie implements ITrie {
 
     @Override
     public String toString() {
-        return "trie" + root.toString();
+        root.showValues(0);
+        return "";
     }
 
 }

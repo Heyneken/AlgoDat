@@ -8,11 +8,20 @@ public class TestTrie {
     @Test
     public void testTrie() {
         Trie trie = new Trie(new TreeMapFactory());
-        trie.insert("Alfons", new StringCoding(4711));
+        StringCoding stringCoding = new StringCoding(4711);
+        trie.insert("Alphabet", stringCoding);
+        trie.insert("Alpha", stringCoding);
+        trie.insert("Alfa", stringCoding);
+        trie.insert("Alf", stringCoding);
+        trie.insert("Alphabet", stringCoding);
+        trie.insert("Alphabet", stringCoding);
+        trie.insert("Backgammon", stringCoding);
+        trie.insert("Backup", stringCoding);
+        trie.insert("A", stringCoding);
+
 
         System.out.println(trie.toString());
 
-        //assertEquals("Trie falsch aufgebaut", "A\n..l\n....f\n......o\n........n\n..........s |-> 4711", trie.toString());
 
     }
 
