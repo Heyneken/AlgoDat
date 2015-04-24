@@ -1,4 +1,7 @@
+import actionPackage.*;
+import mapPackage.TreeMapFactory;
 import org.junit.Test;
+import triePackage.Trie;
 
 /**
  * Created by benjaminarnold on 13.04.15.

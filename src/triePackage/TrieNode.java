@@ -1,3 +1,9 @@
+package triePackage;
+
+import actionPackage.IActionAtInsert;
+import helperPackage.Helper;
+import mapPackage.IMapFactory;
+
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -57,7 +63,7 @@ public class TrieNode implements ITrieNode {
                 return edgeMap.get(nextCharacter).recursiveInsert(allCharacters, actionAtInsert);
             }
             /*
-            Ist die Abfolge der Knoten noch nicht vorhanden, wird ein neuer TrieNode mit, welcher eine neue "Abzweigung"
+            Ist die Abfolge der Knoten noch nicht vorhanden, wird ein neuer triePackage.TrieNode mit, welcher eine neue "Abzweigung"
             darstellt, instanziert. Auch hier geht der Iterator einen Schritt vorwärts.
              */
             else {

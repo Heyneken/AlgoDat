@@ -1,3 +1,5 @@
+package triePackage;
+
 /**
  * Created by Heyneken on 10.04.15.
  */

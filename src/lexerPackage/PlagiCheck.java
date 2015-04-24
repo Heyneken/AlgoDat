@@ -1,3 +1,7 @@
+package lexerPackage;
+
+import alignmentPackage.AlignmentController;
+
 /**
  * Created by Heyneken on 27.03.15.
  */

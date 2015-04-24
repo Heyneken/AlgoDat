@@ -1,3 +1,9 @@
+package alignmentPackage;
+
+import lexerPackage.ILexer;
+import lexerPackage.IToken;
+import lexerPackage.SimpleLexer;
+
 import java.io.*;
 
 /**

@@ -1,3 +1,11 @@
+package lexerPackage;
+
+import actionPackage.*;
+import mapPackage.IMapFactory;
+import mapPackage.TreeMapFactory;
+import triePackage.ITrie;
+import triePackage.Trie;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -56,7 +64,7 @@ public class SimpleLexer implements ILexer {
             }
         }
         while (!foundToken && !noMoreToken);
-        Logger.getLogger(SimpleLexer.class.getName()).log(Level.INFO, "<-- result Token: " + result);
+        Logger.getLogger(SimpleLexer.class.getName()).log(Level.INFO, "<-- result lexerPackage.Token: " + result);
         return result;
     }
 
@@ -65,6 +73,6 @@ public class SimpleLexer implements ILexer {
     }
 
     public  String toString() {
-        return "\nResult Trie \n" + trie;
+        return "\nResult triePackage.Trie \n" + trie;
     }
 }

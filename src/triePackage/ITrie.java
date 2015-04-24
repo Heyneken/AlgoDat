@@ -1,3 +1,7 @@
+package triePackage;
+
+import actionPackage.IActionAtInsert;
+
 import java.util.Iterator;
 
 /**
